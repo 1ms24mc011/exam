@@ -1,0 +1,21 @@
+name: Trigger Jenkins Build
+
+on:
+  push:
+    branches:
+      - main   # change to your branch if needed
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Trigger Jenkins Job
+      run: |
+        curl -X POST "$JENKINS_URL/job/$JENKINS_JOB/build" \
+        --user "$JENKINS_USER:$JENKINS_TOKEN"
+      env:
+        JENKINS_URL: ${{ http://192.168.1.46:8080 }}
+        JENKINS_USER: ${{ admin }}
+        JENKINS_TOKEN: ${{ 11ea4c5e9f03de33865c9e9338eb04f9b2   }}
+        JENKINS_JOB: ${{ newhook }}
