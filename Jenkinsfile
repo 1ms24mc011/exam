@@ -1,21 +1,22 @@
 pipeline {
-  agent any
-  triggers {
-    cron('* * * * *')
-  }
-  stages {
+    agent any
 
-    stage ("checking version") {
-      steps {
-        sh 'python3 --version'
-      }
-  
+    triggers {
+        cron('* * * * *')   
     }
 
-    stage ("running script") {
-      steps {
-        sh 'python3 hello.py'
-      }
+    stages {
+
+        stage("checking version") {
+            steps {
+                sh 'python3 --version'
+            }
+        }
+
+        stage("running script") {
+            steps {
+                sh 'python3 hello.py'
+            }
+        }
     }
-  }
 }
